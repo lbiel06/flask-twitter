@@ -1,0 +1,41 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    h1{
+      font-size: x-large;
+      margin: 0;
+    }
+    p{
+      font-size: medium;
+      margin: 0;
+    }
+    .tweet{
+      border: 1px solid black;
+      padding: 5px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="font-size: xx-large; text-align: center;">Welcome, {{ username }}   <a style="text-align: center; margin-bottom: 30px;" href="/logout">Logout</a></h1>
+  <form action="/tweet"  method="post" style="margin: 5px">
+    <input type="text" name="text" placeholder="New Tweet">
+    <input type="submit" value="Submit">
+  </form>
+  <div class="tweets">
+    {% for tweet in tweets %}
+    <div class="tweet">
+      <p>{{ tweet.username }} {{ tweet.date.strftime('%d.%m.%y %H:%M') }}</p>
+      <h1>{{ tweet.text }}</h1>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
